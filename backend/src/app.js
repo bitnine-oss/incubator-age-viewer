@@ -30,6 +30,7 @@ const {stream} = require('./config/winston');
 const cypherRouter = require('./routes/cypherRouter');
 const databaseRouter = require('./routes/databaseRouter');
 const agcloudRouter = require('./routes/agcloudRouter');
+const cloudageRouter = require('./routes/cloudageRouter');
 const sessionRouter = require('./routes/sessionRouter');
 const app = express();
 
@@ -60,6 +61,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
 app.use('/agensviewer', sessionRouter, agcloudRouter);
+app.use('/ageviewer', sessionRouter, cloudageRouter);
 app.use('/api/v1/*', sessionRouter);
 app.use('/api/v1/cypher', cypherRouter);
 app.use('/api/v1/db', databaseRouter);
