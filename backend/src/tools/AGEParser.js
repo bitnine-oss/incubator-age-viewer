@@ -35,11 +35,19 @@ function AGTypeParse(input) {
 }
 
 async function setAGETypes(client, types) {
-    await client.query(`
-        CREATE EXTENSION IF NOT EXISTS age;
-        LOAD 'age';
-        SET search_path = ag_catalog, "$user", public;
+    await client.query(`        
+        SET search_path = ag_catalog, "$user", public;                
     `)
+    
+    // fake dumy query this is AGE bug 우회
+    try {
+        await client.query(`
+            SELECT *
+            FROM cypher('agc_graph', $$ match(n) return null $$) as (v agtype);
+        `)
+    } catch (error) {
+        
+    }
 
     const oidResults = await client.query(`
         select typelem
