@@ -313,6 +313,7 @@ const SidebarHome = ({
   propertyKeys,
   setCommand,
   command,
+  flavor,
   trimFrame,
   addFrame,
   getMetaData,
@@ -345,11 +346,15 @@ const SidebarHome = ({
           <EdgeList edges={edges} setCommand={setCommand} />
         </div>
         <VerticalLine />
-        <div className="form-group sidebar-item">
-          <b>Properties</b>
-          <br />
-          <PropertyList propertyKeys={propertyKeys} setCommand={setCommand} />
-        </div>
+        {
+         flavor === 'AGENS' ? (
+           <div className="form-group sidebar-item">
+             <b>Properties</b>
+             <br />
+             <PropertyList propertyKeys={propertyKeys} setCommand={setCommand} />
+           </div>
+         ) : <></>
+        }
         <VerticalLine />
         <div className="form-group sidebar-item-disconnect">
           <button
@@ -407,6 +412,7 @@ SidebarHome.propTypes = {
   })).isRequired,
   setCommand: PropTypes.func.isRequired,
   command: PropTypes.string.isRequired,
+  flavor: PropTypes.string.isRequired,
   trimFrame: PropTypes.func.isRequired,
   addFrame: PropTypes.func.isRequired,
   getMetaData: PropTypes.func.isRequired,

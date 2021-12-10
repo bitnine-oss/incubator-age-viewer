@@ -31,6 +31,7 @@ const mapStateToProps = (state) => ({
   graph: state.metadata.graph,
   role: state.metadata.role,
   command: state.editor.command,
+  flavor: state.database.flavor,
 });
 
 const mapDispatchToProps = {

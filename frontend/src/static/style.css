@@ -165,7 +165,7 @@ body {
 }
 
 .sidebar-item {
-    width: 30%;
+    flex: 1;
     margin: 1.5rem 1rem 1.5rem 1rem;
 }
 
